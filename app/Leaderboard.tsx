@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { db } from "../firebaseConfig";
 import { getDocs, collection, query, orderBy, limit } from "firebase/firestore";
 import { getSession } from "next-auth/react";
+import { db } from "../firebase/config";
 
 async function fetchLeaderboardDataFromFirestore() {
   const querySnapshot = await getDocs(
