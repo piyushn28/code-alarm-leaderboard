@@ -1,10 +1,11 @@
-import Image from "next/image";
-import Login from "./login";
+import { ToastContainer } from "react-toastify";
+import Login from "./login/page";
 
 export default function Home() {
   return (
     <main>
       <Login></Login>
+      <ToastContainer />
     </main>
   );
 }
