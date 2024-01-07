@@ -6,11 +6,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { languageOptions } from "../constants/languageOptions";
 
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OutputWindow from "@/components/outputWindow";
 import CustomInput from "@/components/customInput";
 import OutputDetails from "@/components/outputDetails";
+import { toast } from "react-toastify";
+import Workspace from "@/components/workspace";
 
 
 const javascriptDefault = `// some comment`;
@@ -57,12 +58,12 @@ const LandingCodeWindow = () => {
 
     axios
       .request(options)
-      .then(function (response) {
+      .then(function (response: { data: { token: any; }; }) {
         console.log("res.data", response.data);
         const token = response.data.token;
         checkStatus(token);
       })
-      .catch((err) => {
+      .catch((err: { response: { data: any; }; }) => {
         let error = err.response ? err.response.data : err;
         setProcessing(false);
         console.log(error);
@@ -174,10 +175,7 @@ const LandingCodeWindow = () => {
   //   </>
   // );
   return (
-    <Playground
-            code={code}
-            onChange={onChange}
-          />
+    <Workspace />
   );
 };
 export default LandingCodeWindow;
